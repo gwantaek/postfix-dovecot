@@ -12,10 +12,10 @@ RUN useradd -m -s /bin/bash incoming \
     && apt-get install tzdata postfix dovecot-imapd -y \
     && postconf -e "home_mailbox = Maildir/"
 
-COPY docker-entrypoint.sh /
-COPY postfix-conf/10-mail.conf /etc/dovecot/conf.d
-COPY postfix-conf/10-ssl.conf /etc/dovecot/conf.d
-COPY postfix-conf/10-auth.conf /etc/dovecot/conf.d
+COPY ./docker-entrypoint.sh /
+COPY ./postfix-conf/10-mail.conf /etc/dovecot/conf.d
+COPY ./postfix-conf/10-ssl.conf /etc/dovecot/conf.d
+COPY ./postfix-conf/10-auth.conf /etc/dovecot/conf.d
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
